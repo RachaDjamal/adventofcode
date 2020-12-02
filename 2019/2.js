@@ -3,7 +3,7 @@ const data = require('./data.json');
 for (let noun = 0; noun <= 99; noun += 1) {
     loop1:
     for (let verb = 0; verb <= 99; verb += 1) {
-        opcodes = [...data];
+        let opcodes = [...data];
         opcodes[1] = noun;
         opcodes[2] = verb;
         // console.log(noun, verb);
