@@ -1025,15 +1025,13 @@ class Password {
 
     verifyPassword(){
         this.valid = false;
+        // this.indexOne = false;
+        // this.indexTwo = false;
 
-        let count = 0;
-        for(let i = 0; i < this.pass.length; i++) {
-            if (this.pass[i] === this.char) count++;
-        }
-
-        if (count >= this.min && count <= this.max) {
+        if((this.pass[this.min - 1] === this.char && this.pass[this.max - 1] !== this.char) || (this.pass[this.min - 1] !== this.char && this.pass[this.max - 1] === this.char)) {
             this.valid = true;
         }
+
     }
 }
 
@@ -1041,5 +1039,7 @@ for(let i = 0; i < inputs.length; i++) {
     passwords.push(new Password(inputs[i]));
     if(passwords[i].valid) result++;
 }
+
+//passwords.push(new Password("2-9 c: ccccccccc"))
 
 console.log(result);
