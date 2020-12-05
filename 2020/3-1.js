@@ -17,12 +17,12 @@ fs.readFile('./input', 'utf8', (err, input) => {
             this.nextPos();
         }
         nextPos() {
-            this.x += 1; //Don't forget to change value according to the Slope you need.
-            this.y += 2; //Don't forget to change value according to the Slope you need.
+            this.x += 3; //Don't forget to change value according to the Slope you need.
+            this.y += 1; //Don't forget to change value according to the Slope you need.
         }
     }
 
-    let origin = new Position(-1, -2); //Don't forget to change value according to the Slope you need.
+    let origin = new Position(-3, -1); //Don't forget to change value according to the Slope you need.
     positions.push(origin);
 
     for(let i = 0; i < data.length; i++){
