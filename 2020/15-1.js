@@ -5,12 +5,14 @@ fs.readFile('./test', 'utf8', (err, input) => {
 
     let startingNumbers = input.split(',');
 
+    let end = 2020;
+
     //Fill allNumbers with startingNumbers
-    let allNumbers = [];
+    let allNumbers = Array(end);
     for(const [i, entry] of startingNumbers.entries()) {
         let turn = i + 1;
         let number = parseInt(entry);
-        allNumbers.push({number, turn})
+        allNumbers.splice(i, 1, {number, turn});
     }
     
     //Checking if lastSpoken is new
@@ -32,18 +34,18 @@ fs.readFile('./test', 'utf8', (err, input) => {
     }
 
     //Setting end to 2020 to avoid infinite loop and have the result
-    let end = 2020;
-    for(let index = allNumbers.length; index < end; index++) {
+    
+    for(let index = startingNumbers.length; index < end; index++) {
         let turn = index + 1;
         let lastSpoken = allNumbers[index - 1];
         if(checkArray(lastSpoken) === true) {
             let number = 0;
-            allNumbers.push({number, turn});
+            allNumbers.splice(index, 1, {number, turn});
         } else {
             let number = calculateNumber(lastSpoken);
-            allNumbers.push({number, turn});
+            allNumbers.splice(index, 1, {number, turn});
         }
     }
 
-    console.log(allNumbers[allNumbers.length - 1])
+    console.log(allNumbers[end - 1])
 })
