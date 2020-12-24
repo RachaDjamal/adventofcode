@@ -13,20 +13,20 @@ fs.readFile('./test', 'utf8', (err, input) => {
             said[num] = i + 1;
         }
         
-        let current_spoken = input[input.length - 1];
+        let currentSpoken = input[input.length - 1];
 
         for (let turn = input.length; turn < end; turn++) {
-            if (!said[current_spoken]) {
-                said[current_spoken] = turn;
-                current_spoken = 0;
+            if (!said[currentSpoken]) {
+                said[currentSpoken] = turn;
+                currentSpoken = 0;
             } else {
-                let last_turn_was_spoken = said[current_spoken];
-                said[current_spoken] = turn;
-                current_spoken = turn - last_turn_was_spoken;
+                let lastSpoken = said[currentSpoken];
+                said[currentSpoken] = turn;
+                currentSpoken = turn - lastSpoken;
             }
         }
     
-        return current_spoken;
+        return currentSpoken;
     }
 
     // console.log(calculeNumber(2020));
