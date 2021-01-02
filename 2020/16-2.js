@@ -1,5 +1,3 @@
-const { time, assert } = require('console');
-const { COPYFILE_FICLONE_FORCE } = require('constants');
 const fs = require('fs')
 fs.readFile('./input', 'utf8', (err, input) => {
     if (err) throw err
