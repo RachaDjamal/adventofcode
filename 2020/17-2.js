@@ -42,7 +42,7 @@ fs.readFile('./input', 'utf8', (err, input) => {
             for(let y = 0; y < state[x].length; y++) {
                 const char = state[x][y];
                 if(char === '#') {
-                    const cube = convertArrayToString([x, y, 0]);
+                    const cube = convertArrayToString([x, y, 0, 0]);
                     cubes.add(cube);
                 }
             }
@@ -51,14 +51,16 @@ fs.readFile('./input', 'utf8', (err, input) => {
     };
 
     function getNeighbors(cube) {
-        const [x, y, z] = cube.split(',').map(Number);
+        const [x, y, z, w] = cube.split(',').map(Number);
         const neighbors = new Set();
 
         for(let deltaX = -1; deltaX <= 1; deltaX++) {
             for(let deltaY = -1; deltaY <= 1; deltaY++) {
                 for(let deltaZ = -1; deltaZ <= 1; deltaZ++) {
-                    const neighbor = convertArrayToString([x + deltaX, y + deltaY, z + deltaZ]);
-                    neighbors.add(neighbor);
+                    for(let deltaW = -1; deltaW <= 1; deltaW++) {
+                        const neighbor = convertArrayToString([x + deltaX, y + deltaY, z + deltaZ, w + deltaW]);
+                        neighbors.add(neighbor);
+                    }
                 }
             }
         }
