@@ -4,18 +4,16 @@ fs.readFile('./input', 'utf8', (err, input) => {
 	
 	input = input.split('\n').map((line) => {return line.split(' ').join('')});
 	
-	// console.log(input)
 	let result = [];
 	for(const line of input) {
 		let temp = line;
 		while(countParenthesis(temp) !== 0) {
 			temp = removeParenthesis(temp);
-			// console.log(temp)
 		}
 		result.push(resolveWithoutParenthesis(temp));
 	}
 	
-	console.log(result.reduce((acc, curr) => acc += curr));
+	console.log(result.reduce((acc, curr) => acc + curr))
 	
 	function removeParenthesis(string) {
 		let result = string;
@@ -29,7 +27,8 @@ fs.readFile('./input', 'utf8', (err, input) => {
 				}
 				parenthesisContent = parenthesisContent.split('').reverse().join('');
 				let num = resolveWithoutParenthesis(parenthesisContent).toString();
-				result = result.replace('(' + parenthesisContent + ')', num)
+				result = result.replace('(' + parenthesisContent + ')', num);
+				i = 0;
 			}
 		}
 		return result;
