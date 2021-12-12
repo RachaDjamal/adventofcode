@@ -1,5 +1,4 @@
 const fs = require('fs');
-const { connect } = require('http2');
 fs.readFile('./input', 'utf8', (err, input) => {
     if (err) throw err
 
